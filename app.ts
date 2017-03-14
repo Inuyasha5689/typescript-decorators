@@ -38,13 +38,24 @@ const plant = new Plant();
 (<any>plant).print();
 
 // Method Decorators
+//Property Decorator
 function editable(value: boolean) {
     return function (target: any, propName: string, descriptor: PropertyDescriptor) {
         descriptor.writable = value;
     }
 }
 
+function overwriteable(value: boolean): any {
+    return function (target: any, propName: string) {
+        const newDescriptor: PropertyDescriptor = {
+            writable: value
+        };
+        return newDescriptor;
+    }
+}
+
 class Project {
+    @overwriteable(false)
     projectName: string;
 
     constructor(name: string) {
