@@ -11,3 +11,13 @@ class Person {
         console.log("HI!");
     }
 }
+
+// Factory
+function logging(value: boolean) {
+    return value ? logged : null;
+}
+
+@logging(false)
+class Car {
+
+}
